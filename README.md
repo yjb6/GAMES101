@@ -33,4 +33,4 @@ GAMES101作业代码
 
 # assignment4:
 
-![](https://github.com/yjb6/GAMES101/tree/main/Hw4/images)
+![](https://github.com/yjb6/GAMES101/tree/main/Hw4/images/bezier.png)

@@ -37,3 +37,6 @@ GAMES101作业代码
 
 # assignment5:
 ![](https://github.com/yjb6/GAMES101/blob/main/Assignment5/images/ray-tracing.png)
+
+# assignment6:
+![](https://github.com/yjb6/GAMES101/blob/main/Assignment6/image/result.png)

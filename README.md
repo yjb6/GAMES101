@@ -34,3 +34,6 @@ GAMES101作业代码
 # assignment4:
 
 ![](https://github.com/yjb6/GAMES101/blob/main/Hw4/images/bezier.png)
+
+# assignment5:
+![](https://github.com/yjb6/GAMES101/blob/main/Assignment5/Code/build/binary.ppm)

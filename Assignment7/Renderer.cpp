@@ -10,12 +10,22 @@
 inline float deg2rad(const float& deg) { return deg * M_PI / 180.0; }
 
 const float EPSILON = 0.00001;
-
+std::mutex my_mutex;
 // The main render function. This where we iterate over all pixels in the image,
 // generate primary rays and cast these rays into the scene. The content of the
 // framebuffer is saved to a file.
+// void thread_fun( Scene& scene,Ray ray,int spp,Vector3f & value)
+void thread_fun(const Scene& scene,Vector3f&value,Ray& ray,int spp)
+{
+    auto temp=scene.castRay(ray, 0) / spp; 
+    std::lock_guard<std::mutex> lockGuard(my_mutex);
+    value+=temp;
+    // std::cout<<"thread";
+    return;
+}
 void Renderer::Render(const Scene& scene)
 {
+    // std::cout<<std::thread::hardware_concurrency() <<'\n';
     std::vector<Vector3f> framebuffer(scene.width * scene.height);
 
     float scale = tan(deg2rad(scene.fov * 0.5));
@@ -24,8 +34,9 @@ void Renderer::Render(const Scene& scene)
     int m = 0;
 
     // change the spp value to change sample ammount
-    int spp = 16;
+    int spp = 2;
     std::cout << "SPP: " << spp << "\n";
+    
     for (uint32_t j = 0; j < scene.height; ++j) {
         for (uint32_t i = 0; i < scene.width; ++i) {
             // generate primary ray direction
@@ -34,8 +45,18 @@ void Renderer::Render(const Scene& scene)
             float y = (1 - 2 * (j + 0.5) / (float)scene.height) * scale;
 
             Vector3f dir = normalize(Vector3f(-x, y, 1));
+            std::vector<std::thread> th;
+            Ray ray(eye_pos, dir);
             for (int k = 0; k < spp; k++){
-                framebuffer[m] += scene.castRay(Ray(eye_pos, dir), 0) / spp;  
+                // th[i]=std::thread(thread_fun,scene,ray,spp,framebuffer[m]);
+                th.emplace_back(std::thread(thread_fun,std::ref(scene),std::ref(framebuffer[m]),std::ref(ray),spp));
+                // std::cout<<k<<'\n';
+                // framebuffer[m] += scene.castRay(Ray(eye_pos, dir), 0) / spp;                  
+            }
+                for(int k=0;k<th.size();k++)
+            {
+                th[k].join();
+                // std::cout<<k<<" ok\n";
             }
             m++;
         }

@@ -43,4 +43,5 @@ GAMES101作业代码
 
 # assignment7：
 * ssp=12
+
 ![](https://github.com/yjb6/GAMES101/blob/main/Assignment7/images/result.png)

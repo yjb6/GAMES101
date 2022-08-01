@@ -42,6 +42,10 @@ GAMES101作业代码
 ![](https://github.com/yjb6/GAMES101/blob/main/Assignment6/image/result.png)
 
 # assignment7：
-* ssp=12
+* spp=12
 
 ![](https://github.com/yjb6/GAMES101/blob/main/Assignment7/images/result.png)
+
+* spp=100
+
+![](https://github.com/yjb6/GAMES101/blob/main/Assignment7/images/spp100.png)

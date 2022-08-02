@@ -51,4 +51,4 @@ GAMES101作业代码
 ![](https://github.com/yjb6/GAMES101/blob/main/Assignment7/images/spp100.png)
 
 #assignment8:
-![](https://github.com/yjb6/GAMES101/blob/main/Assignment8/images/动画.gif)
+![](https://github.com/yjb6/GAMES101/blob/main/assignment8/images/%E5%8A%A8%E7%94%BB.gif)
